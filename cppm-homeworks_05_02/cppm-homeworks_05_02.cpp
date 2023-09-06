@@ -5,42 +5,35 @@
 
 //базовый родитель
 class Figure {
+protected:    
+    std::string name;
+    Figure() {}; 
+public:
+    virtual void get_info() {};
+};
+
+//треугольник
+class Triangle : public Figure {
 protected:
     //стороны
     int a;
     int b;
     int c;
-    int d;
+   
     //углы
     int A;
     int B;
     int C;
-    int D;
-    std::string name;
-    Figure(int a, int b, int c, int d, int A, int B, int C, int D) {
+   
+public:
+    Triangle(int a, int b, int c, int A, int B, int C) :Figure() {
+        name = "Треугольник";
         this->a = a;
         this->b = b;
         this->c = c;
-        this->d = d;
         this->A = A;
         this->B = B;
         this->C = C;
-        this->D = D;
-    }
-public:
-    virtual void get_info() {
-        std::cout << name << ":\nCтороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
-        std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
-    }
-
-};
-
-//треугольник
-class Triangle : public Figure{
-    
-public:
-    Triangle(int a, int b, int c, int A, int B, int C) :Figure(a, b, c, 0, A, B, C, 0) {
-        name = "Треугольник";
     };
     void get_info() override {
         std::cout << name << ":\nCтороны: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
@@ -52,10 +45,29 @@ public:
 
 //четырехугольник
 class Quadrangle:public Figure {
+protected:
+    //стороны
+    int a;
+    int b;
+    int c;
+    int d;
+    //углы
+    int A;
+    int B;
+    int C;
+    int D;
     
 public:
-    Quadrangle(int a, int b, int c, int d, int A, int B, int C, int D) :Figure(a ,b ,c ,d ,A ,B ,C ,D){
+    Quadrangle(int a, int b, int c, int d, int A, int B, int C, int D) :Figure(){
         name = "Четырехугольник";
+        this->a = a;
+        this->b = b;
+        this->c = c;
+        this->d = d;
+        this->A = A;
+        this->B = B;
+        this->C = C;
+        this->D = D;
     }
     void get_info() override{
         std::cout << name << ":\nCтороны: "<<"a="<< a << " b=" << b << " c=" << c << " d=" << d << std::endl;
